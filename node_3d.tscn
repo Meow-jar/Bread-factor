@@ -19,7 +19,6 @@ glow_enabled = true
 script/source = "extends CharacterBody3D
 
 @export var DEGRU = 350
-
 @export var max_pitch = 1.6
 @onready var player = $\".\"
 @onready var CAM = $dode/Camera3D
