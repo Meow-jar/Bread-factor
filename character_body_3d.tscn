@@ -7,9 +7,16 @@ script/source = "extends CharacterBody3D
 @export var max_pitch = 1.6
 @onready var player = $\".\"
 @onready var CAM = $camer/Camera3D
+
+@onready var camer = $camer
+@onready var pick_up_ray = $camer/Camera3D/RayCast3D
+@onready var hand = $camer/Camera3D/hand/MeshInstance3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var gravity: float = ProjectSettings.get_setting(\"physics/3d/default_gravity\")
+var held_object = null
+var object_is_picked = false
+var hold_object = false
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -40,9 +47,30 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	pickup()
+
+func pickup():
+	var object = pick_up_ray.get_collider()
+	if pick_up_ray.is_colliding():
+		if object.is_in_group(\"pickable\") and Input.is_action_just_pressed(\"action\"):
+			held_object = object
+			#held_object.colllision_layer = 2
+			object_is_picked = true
+	
+	if Input.is_action_just_pressed(\"action\") and held_object and object_is_picked and hold_object:
+		held_object = null
+		object_is_picked = false
+		hold_object = false
+	
+	if held_object and object_is_picked:
+		held_object.global_position = hand.global_position
+		held_object.global_rotation = hand.global_rotation
+		hold_object = true
 "
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iwpo4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bu0v1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bu0v1"]
 
@@ -59,11 +87,21 @@ shape = SubResource("CapsuleShape3D_iwpo4")
 [node name="camer" type="Node3D" parent="." unique_id=1276813921]
 
 [node name="Camera3D" type="Camera3D" parent="camer" unique_id=1210975621]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6046821, -0.6166061)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6046821, -0.538921)
+
+[node name="RayCast3D" type="RayCast3D" parent="camer/Camera3D" unique_id=2135344369]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 0, 4.7683716e-07)
+
+[node name="hand" type="Node3D" parent="camer/Camera3D" unique_id=341082545]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="camer/Camera3D/hand" unique_id=1591494827]
+transform = Transform3D(0.04, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.014862359, -0.20550257, -1.8598412)
+visible = false
+mesh = SubResource("BoxMesh_bu0v1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2089664391]
 mesh = SubResource("CapsuleMesh_bu0v1")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1667316309]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008178711, 0.5892395, -0.5773985)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008178711, 0.5892395, -0.53242296)
 shape = SubResource("CylinderShape3D_bu0v1")

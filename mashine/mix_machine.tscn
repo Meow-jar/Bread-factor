@@ -5,29 +5,52 @@
 
 [sub_resource type="GDScript" id="GDScript_uxm8v"]
 script/source = "extends Node3D
+var waterbool = false
+var flourbool = false
 @onready var player = $\"../player\"
-
+@onready var water = $\"../water\"
+@onready var frour = $\"../flour\"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if waterbool == true and flourbool == true:
+		print(\"хлеб готов\") 
 	pass
 
 
 func _on_water_tg_body_entered(body: Node3D) -> void:
-	if body == player:
-		print(\"отказано\")
-	else:
-		print(\"внутри\")
+	if body == water:
+		waterbool = true
+		print(\"water = \", waterbool)
+	
 	pass # Replace with function body.
 
 
 func _on_water_tg_body_exited(body: Node3D) -> void:
-	print(\"не внутри\")
+	if body == water:
+		waterbool = false
+		print(\"water = \", waterbool)
+	
+	pass # Replace with function body.
+
+
+func _on_flour_tg_body_entered(body: Node3D) -> void:
+	if body == frour:
+		flourbool = true
+		print(\"flour = \", flourbool)
+	pass # Replace with function body.
+
+
+func _on_flour_tg_body_exited(body: Node3D) -> void:
+	if body == frour:
+		flourbool = false
+		print(\"flour = \", flourbool)
 	pass # Replace with function body.
 "
 
@@ -67,3 +90,5 @@ shape = SubResource("BoxShape3D_uxm8v")
 
 [connection signal="body_entered" from="water_tg" to="." method="_on_water_tg_body_entered"]
 [connection signal="body_exited" from="water_tg" to="." method="_on_water_tg_body_exited"]
+[connection signal="body_entered" from="flour_tg" to="." method="_on_flour_tg_body_entered"]
+[connection signal="body_exited" from="flour_tg" to="." method="_on_flour_tg_body_exited"]

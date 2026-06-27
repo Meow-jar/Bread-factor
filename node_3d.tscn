@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://dbjxh4suwijt7"]
 
 [ext_resource type="PackedScene" uid="uid://bbtjafp66ea74" path="res://mashine/mix_machine.tscn" id="3_a0tk4"]
+[ext_resource type="PackedScene" uid="uid://cjb7xj146tues" path="res://Ingredients/water.tscn" id="4_jka67"]
 [ext_resource type="PackedScene" uid="uid://b8vh7gqrqaqin" path="res://character_body_3d.tscn" id="4_r3fl7"]
+[ext_resource type="PackedScene" uid="uid://n33qro5pqfem" path="res://Ingredients/flour.tscn" id="5_i5arm"]
 [ext_resource type="PackedScene" uid="uid://c0fd6m3ph5ka3" path="res://factor.tscn" id="5_jka67"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
@@ -30,9 +32,8 @@ environment = SubResource("Environment_a0tk4")
 transform = Transform3D(1, 0, 0, 0, -0.99991995, -0.012653218, 0, 0.012653217, -0.99991995, 0, 19.711796, 0)
 shadow_enabled = true
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=9133563]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=9133563 groups=["pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2180643, 6.255751, -5.0913954)
-mass = 1000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=540565812]
 shape = SubResource("SphereShape3D_a0tk4")
@@ -47,3 +48,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.2928104, 0)
 
 [node name="mix_machine" parent="." unique_id=867410158 instance=ExtResource("3_a0tk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.443521, -6.6995406)
+
+[node name="water" parent="." unique_id=311863782 groups=["pickable"] instance=ExtResource("4_jka67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.708844, -4.6398163)
+
+[node name="flour" parent="." unique_id=361582024 groups=["pickable"] instance=ExtResource("5_i5arm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.827176, 9.327146, -4.1711426)
