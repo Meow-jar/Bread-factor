@@ -54,10 +54,11 @@ func pickup():
 	if pick_up_ray.is_colliding():
 		if object.is_in_group(\"pickable\") and Input.is_action_just_pressed(\"action\"):
 			held_object = object
-			#held_object.colllision_layer = 2
+			held_object.collision_layer = 2
 			object_is_picked = true
 	
 	if Input.is_action_just_pressed(\"action\") and held_object and object_is_picked and hold_object:
+		held_object.linear_velocity = Vector3(0.1, 0.1, 0.1)
 		held_object = null
 		object_is_picked = false
 		hold_object = false
@@ -91,6 +92,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6046821, -0.538921)
 
 [node name="RayCast3D" type="RayCast3D" parent="camer/Camera3D" unique_id=2135344369]
 transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 0, 4.7683716e-07)
+collision_mask = 3
 
 [node name="hand" type="Node3D" parent="camer/Camera3D" unique_id=341082545]
 

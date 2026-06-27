@@ -27,6 +27,7 @@ environment = SubResource("Environment_a0tk4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=647186116]
 transform = Transform3D(0.7, 0, 0, 0, 1, -1.2239188e-07, 0, 1.7484555e-07, 0.7, -4.3980885, -2.4031887, -3.904828)
+layers = 3
 mesh = ExtResource("1_ubbsx")
 skin = SubResource("Skin_a202f")
 

@@ -10,6 +10,7 @@ albedo_texture = ExtResource("1_7wcun")
 [sub_resource type="BoxShape3D" id="BoxShape3D_7wcun"]
 
 [node name="water" type="RigidBody3D" unique_id=311863782]
+collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=325938741]
 material_override = SubResource("StandardMaterial3D_7wcun")
