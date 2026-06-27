@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbjxh4suwijt7"]
 
-[ext_resource type="PackedScene" uid="uid://bbtjafp66ea74" path="res://mix_machine.tscn" id="3_a0tk4"]
+[ext_resource type="PackedScene" uid="uid://bbtjafp66ea74" path="res://mashine/mix_machine.tscn" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://b8vh7gqrqaqin" path="res://character_body_3d.tscn" id="4_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://c0fd6m3ph5ka3" path="res://factor.tscn" id="5_jka67"]
 
@@ -31,7 +31,7 @@ transform = Transform3D(1, 0, 0, 0, -0.99991995, -0.012653218, 0, 0.012653217, -
 shadow_enabled = true
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=9133563]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.255751, -5.0913954)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2180643, 6.255751, -5.0913954)
 mass = 1000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=540565812]

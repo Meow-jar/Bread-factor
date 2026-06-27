@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://n33qro5pqfem"]
+
+[ext_resource type="Texture2D" uid="uid://dpmtf5t66ti12" path="res://textures/flour.png" id="1_3723e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6l260"]
+albedo_texture = ExtResource("1_3723e")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qi1wl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wcun"]
+
+[node name="flour" type="RigidBody3D" unique_id=311863782]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=325938741]
+material_override = SubResource("StandardMaterial3D_6l260")
+mesh = SubResource("BoxMesh_qi1wl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1426200583]
+shape = SubResource("BoxShape3D_7wcun")

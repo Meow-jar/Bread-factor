@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cjb7xj146tues"]
+
+[ext_resource type="Texture2D" uid="uid://ct2lwetevh4vf" path="res://textures/water.png" id="1_7wcun"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wcun"]
+albedo_texture = ExtResource("1_7wcun")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qi1wl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wcun"]
+
+[node name="water" type="RigidBody3D" unique_id=311863782]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=325938741]
+material_override = SubResource("StandardMaterial3D_7wcun")
+mesh = SubResource("BoxMesh_qi1wl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1426200583]
+shape = SubResource("BoxShape3D_7wcun")
