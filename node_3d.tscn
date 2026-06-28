@@ -45,6 +45,7 @@ mesh = SubResource("SphereMesh_r3fl7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.2928104, 0)
 
 [node name="factor" parent="." unique_id=197515386 instance=ExtResource("5_jka67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031407833, 0, 0.0204525)
 
 [node name="mix_machine" parent="." unique_id=867410158 instance=ExtResource("3_a0tk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.443521, -6.6995406)
