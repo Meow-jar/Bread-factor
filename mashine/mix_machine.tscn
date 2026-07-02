@@ -7,6 +7,7 @@
 script/source = "extends Node3D
 var waterbool = false
 var flourbool = false
+var bread = preload(\"res://Ingredients/bread.tscn\")
 @onready var player = $\"../player\"
 @onready var water = $\"../water\"
 @onready var frour = $\"../flour\"
@@ -15,12 +16,20 @@ var flourbool = false
 func _ready() -> void:
 
 	pass # Replace with function body.
-
+func spawn_object(x, y, z):
+	var new_bread = bread.instantiate()
+	
+	new_bread.position.x = x
+	new_bread.position.y = y
+	new_bread.position.z = z
+	
+	add_child(new_bread)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if waterbool == true and flourbool == true:
-		print(\"хлеб готов\") 
+		print(\"хлеб готов\")
+		spawn_object(0, 0.5, -8) 
 	pass
 
 
@@ -77,12 +86,15 @@ mesh = ExtResource("2_f307q")
 shape = SubResource("ConcavePolygonShape3D_6jhq7")
 
 [node name="water_tg" type="Area3D" parent="." unique_id=1482173234]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="water_tg" unique_id=630618794]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5508662)
 shape = SubResource("BoxShape3D_f307q")
 
 [node name="flour_tg" type="Area3D" parent="." unique_id=1520804178]
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="flour_tg" unique_id=281035597]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6456583, 0, 0)

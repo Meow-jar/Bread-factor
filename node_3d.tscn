@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b8vh7gqrqaqin" path="res://character_body_3d.tscn" id="4_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://n33qro5pqfem" path="res://Ingredients/flour.tscn" id="5_i5arm"]
 [ext_resource type="PackedScene" uid="uid://c0fd6m3ph5ka3" path="res://factor.tscn" id="5_jka67"]
+[ext_resource type="PackedScene" uid="uid://dc3k7pl0a8fej" path="res://Ingredients/bread.tscn" id="6_i5arm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -55,3 +56,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.708844, -4.6398163)
 
 [node name="flour" parent="." unique_id=361582024 groups=["pickable"] instance=ExtResource("5_i5arm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.827176, 9.327146, -4.1711426)
+
+[node name="bread" parent="." unique_id=1711084862 groups=["pickable"] instance=ExtResource("6_i5arm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.524982, 7.921358, -2.9548492)

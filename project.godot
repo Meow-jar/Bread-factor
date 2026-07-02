@@ -26,6 +26,10 @@ window/size/borderless=true
 
 movie_writer/fps=300
 
+[global_group]
+
+pickable=""
+
 [input]
 
 forward={
