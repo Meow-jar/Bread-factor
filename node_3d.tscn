@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://dbjxh4suwijt7"]
 
 [ext_resource type="PackedScene" uid="uid://bbtjafp66ea74" path="res://mashine/mix_machine.tscn" id="3_a0tk4"]
-[ext_resource type="PackedScene" uid="uid://cjb7xj146tues" path="res://Ingredients/water.tscn" id="4_jka67"]
 [ext_resource type="PackedScene" uid="uid://b8vh7gqrqaqin" path="res://character_body_3d.tscn" id="4_r3fl7"]
-[ext_resource type="PackedScene" uid="uid://n33qro5pqfem" path="res://Ingredients/flour.tscn" id="5_i5arm"]
 [ext_resource type="PackedScene" uid="uid://c0fd6m3ph5ka3" path="res://factor.tscn" id="5_jka67"]
 [ext_resource type="PackedScene" uid="uid://dc3k7pl0a8fej" path="res://Ingredients/bread.tscn" id="6_i5arm"]
+[ext_resource type="PackedScene" uid="uid://dtlqavq71xw8x" path="res://mashine/bake_machine.tscn" id="7_jsk3o"]
+[ext_resource type="PackedScene" uid="uid://wnexdnier4i1" path="res://debug/spawn_water.tscn" id="7_wc5p8"]
+[ext_resource type="PackedScene" uid="uid://06dmitvnk7of" path="res://debug/spawn_dough.tscn" id="8_4arys"]
+[ext_resource type="PackedScene" uid="uid://i77oydqd5rrq" path="res://debug/spawn_flour.tscn" id="8_jsk3o"]
+[ext_resource type="PackedScene" uid="uid://dyat0srs3fpnb" path="res://Ingredients/dough.tscn" id="9_4arys"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -51,11 +54,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031407833, 0, 0.0204525)
 [node name="mix_machine" parent="." unique_id=867410158 instance=ExtResource("3_a0tk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.443521, -6.6995406)
 
-[node name="water" parent="." unique_id=311863782 groups=["pickable"] instance=ExtResource("4_jka67")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.708844, -4.6398163)
-
-[node name="flour" parent="." unique_id=361582024 groups=["pickable"] instance=ExtResource("5_i5arm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.827176, 9.327146, -4.1711426)
-
-[node name="bread" parent="." unique_id=1711084862 groups=["pickable"] instance=ExtResource("6_i5arm")]
+[node name="bread" parent="." unique_id=1711084862 instance=ExtResource("6_i5arm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.524982, 7.921358, -2.9548492)
+
+[node name="spawn_water" parent="." unique_id=662677055 groups=["pickable"] instance=ExtResource("7_wc5p8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.330127, 8.70656, 0)
+
+[node name="spawn_flour" parent="." unique_id=296075015 instance=ExtResource("8_jsk3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.251854, 10.144478, 3.3748455)
+
+[node name="bake_machine" parent="." unique_id=269504517 instance=ExtResource("7_jsk3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0725255, 4.4332914, -11.944727)
+
+[node name="spawn_dough" parent="." unique_id=378610973 instance=ExtResource("8_4arys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.27541, 9.055186, -9.422169)
+
+[node name="dough" parent="." unique_id=1111943601 instance=ExtResource("9_4arys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5930405, 7.244608, -9.040209)

@@ -11,11 +11,13 @@ script/source = "extends CharacterBody3D
 @onready var camer = $camer
 @onready var pick_up_ray = $camer/Camera3D/RayCast3D
 @onready var hand = $camer/Camera3D/hand/MeshInstance3D
+@onready var water = $\"../spawn_water\"
+@onready var flour = $\"../spawn_flour\"
 var action = true
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var gravity: float = ProjectSettings.get_setting(\"physics/3d/default_gravity\")
-var held_object = null
+@export var held_object = null
 var object_is_picked = false
 var hold_object = false
 func _ready():
@@ -54,7 +56,7 @@ func pickup():
 	var object = pick_up_ray.get_collider()
 	if action == true:
 		if pick_up_ray.is_colliding():
-			if object.is_in_group(\"pickable\") and Input.is_action_just_pressed(\"action\"):
+			if Input.is_action_just_pressed(\"action\"):
 				held_object = object
 				held_object.collision_layer = 2
 				object_is_picked = true
@@ -74,13 +76,13 @@ func pickup():
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body != $\"../water\" or $\"../flour\" or player:
+	if body.get_parent() == water or body.get_parent() == flour or player:
 		action = false
 	pass # Replace with function body.
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	if body != $\"../water\" or $\"../flour\" or player:
+	if body.get_parent() == water or body.get_parent() == flour or player:
 		action = true
 	pass # Replace with function body.
 "
@@ -117,8 +119,7 @@ collision_mask = 3
 [node name="hand" type="Node3D" parent="camer/Camera3D" unique_id=341082545]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="camer/Camera3D/hand" unique_id=1591494827]
-transform = Transform3D(0.04, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.014862359, -0.20550257, -1.8598412)
-visible = false
+transform = Transform3D(0.04, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.014862359, -0.010833085, -1.9202112)
 mesh = SubResource("BoxMesh_bu0v1")
 
 [node name="Area3D" type="Area3D" parent="camer/Camera3D/hand" unique_id=250990419]

@@ -8,45 +8,38 @@ script/source = "extends Node3D
 var waterbool = false
 var flourbool = false
 var dough = preload(\"res://Ingredients/dough.tscn\")
-var water_parent = load(\"res://Ingredients/water.tscn\").instantiate()
-@onready var water = $\"../spawn_water\"
-@onready var flour = $\"../spawn_flour\"
+@onready var water = $\"../water\"
+@onready var flour = $\"../flour\"
 @onready var spawn = $spawn
-var water_inven = 0
-var flour_invent = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
 	pass # Replace with function body.
-func spawn_object():
+func spawn_object(x, y, z):
 	var new_dough = dough.instantiate()
 	
 	new_dough.position.x = spawn.position.x
 	new_dough.position.y = spawn.position.y
 	new_dough.position.z = spawn.position.z
-	new_dough.collision_layer = 1
+	
 	add_child(new_dough)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if water_inven > 0 and water_inven < 5 and flour_invent > 0 and flour_invent < 5 :
+	if waterbool == true and flourbool == true :
 		print(\"хлеб готов\")
-		water_inven = water_inven - 1
-		flour_invent = flour_invent - 1
-		print (\"water = \",water_inven)
-		print(\"flour = \", flour_invent)
-		for i in 2:
-			spawn_object() 
+		spawn_object(0,0,0) 
+		water.queue_free()
+		flour.queue_free()
 	pass
 
 
 func _on_water_tg_body_entered(body: Node3D) -> void:
-	print(\"Body: \", body, \" water: \", water)
-	if body.scene_file_path == water:
-		water_inven = water_inven + 1
-		if water_inven > 0 and water_inven < 5:
-			print (\"water = \",water_inven)
-			body.queue_free()
+	if body == water: 
+		Input.action_press(\"action\")
+		await get_tree().create_timer(0.5).timeout 
 		waterbool = true
 		print(\"water = \", waterbool)
 	
@@ -54,7 +47,7 @@ func _on_water_tg_body_entered(body: Node3D) -> void:
 
 
 func _on_water_tg_body_exited(body: Node3D) -> void:
-	if body.scene_file_path == water:
+	if body == water:
 		waterbool = false
 		print(\"water = \", waterbool)
 	
@@ -62,19 +55,16 @@ func _on_water_tg_body_exited(body: Node3D) -> void:
 
 
 func _on_flour_tg_body_entered(body: Node3D) -> void:
-	print(\"Body: \", body, \" flour: \", flour)
-	if body.scene_file_path == flour:
-		flour_invent = flour_invent + 1
-		if flour_invent > 0 and flour_invent < 5:
-			print(\"flour = \", flour_invent)
-			body.queue_free()
+	if body == flour:
+		Input.action_press(\"action\")
+		await get_tree().create_timer(0.5).timeout 
 		flourbool = true
 		print(\"flour = \", flourbool)
 	pass # Replace with function body.
 
 
 func _on_flour_tg_body_exited(body: Node3D) -> void:
-	if body.scene_file_path == flour:
+	if body == flour:
 		flourbool = false
 		print(\"flour = \", flourbool)
 	pass # Replace with function body.
