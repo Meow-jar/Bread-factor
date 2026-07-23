@@ -5,7 +5,6 @@
 
 [sub_resource type="GDScript" id="GDScript_fhs66"]
 script/source = "extends Node3D
-var doughbool = false
 var bread = preload(\"res://Ingredients/bread.tscn\")
 var dough = \"res://Ingredients/dough.tscn\"
 @onready var spawn = $spawn
@@ -43,15 +42,10 @@ func _on_dough_tg_body_entered(body: Node3D) -> void:
 		if dough_inven > 0 and dough_inven < 2:
 			print (\"dough = \",dough_inven)
 			body.queue_free()
-		doughbool = true
-		print(doughbool)
 	pass # Replace with function body.
 
 
 func _on_dough_tg_body_exited(body: Node3D) -> void:
-	if body.scene_file_path == dough:
-		doughbool = false
-		print(doughbool)
 	pass # Replace with function body.
 "
 

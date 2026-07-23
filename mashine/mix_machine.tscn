@@ -9,8 +9,8 @@ var waterbool = false
 var flourbool = false
 var dough = preload(\"res://Ingredients/dough.tscn\")
 var water_parent = load(\"res://Ingredients/water.tscn\").instantiate()
-@onready var water = $\"../spawn_water\"
-@onready var flour = $\"../spawn_flour\"
+var water = \"res://Ingredients/water.tscn\"
+var flour = \"res://Ingredients/flour.tscn\"
 @onready var spawn = $spawn
 var water_inven = 0
 var flour_invent = 0
@@ -47,17 +47,11 @@ func _on_water_tg_body_entered(body: Node3D) -> void:
 		if water_inven > 0 and water_inven < 5:
 			print (\"water = \",water_inven)
 			body.queue_free()
-		waterbool = true
-		print(\"water = \", waterbool)
 	
 	pass # Replace with function body.
 
 
 func _on_water_tg_body_exited(body: Node3D) -> void:
-	if body.scene_file_path == water:
-		waterbool = false
-		print(\"water = \", waterbool)
-	
 	pass # Replace with function body.
 
 
@@ -68,15 +62,10 @@ func _on_flour_tg_body_entered(body: Node3D) -> void:
 		if flour_invent > 0 and flour_invent < 5:
 			print(\"flour = \", flour_invent)
 			body.queue_free()
-		flourbool = true
-		print(\"flour = \", flourbool)
 	pass # Replace with function body.
 
 
 func _on_flour_tg_body_exited(body: Node3D) -> void:
-	if body.scene_file_path == flour:
-		flourbool = false
-		print(\"flour = \", flourbool)
 	pass # Replace with function body.
 "
 
